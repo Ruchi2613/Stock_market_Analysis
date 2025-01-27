@@ -1,0 +1,169 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
+body{
+    background: #F2F2F2;
+    margin: 0;
+    font-family: 'Poppins';
+}
+h1 {
+    border: 2px #eee solid;
+    color: brown;
+    text-align: center;
+    padding: 10px;
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.row > div[class*='col-'] {
+ display: flex;
+}
+
+.card {
+  border: 0px;
+  margin: 2rem;
+  display: grid;
+}
+
+img{
+    padding: 3rem;
+    border-block-end: inherit;
+}
+
+.card:hover {
+	transform: scale(1.035, 1.035);
+	box-shadow: 0 15px 30px rgba(0, 0, 0, 0.5);
+  transition-duration: 0.3s;
+}
+
+.card-title{
+  border: 1px solid black;
+  border-radius: 1rem;
+  padding: 7px;
+  display: -webkit-inline-box;
+}
+
+.card-body{
+    background: lightgray;
+    color: black;
+}
+
+.stk-title{
+  padding: 18px;
+  font-size: 32px;
+  color: grey;
+  font-weight: bold;
+}
+
+.tit{
+  padding: 18px;
+}
+
+#open{
+  font-size: 37px;
+  font-weight: bolder;
+}
+
+#chng{
+  padding-left: 17px;
+  font-size: 21px;
+}
+
+#perchng{
+  font-size: 21px;
+}
+
+.green{
+  color: green;
+}
+
+.red{
+  color: red;
+}
+
+#stock-info{
+    width: 60%;
+    min-width: 550px;
+    margin: 0 auto;
+}
+
+#stock-info h4, #stock-info h2, #stock-info h3{
+    text-align: center;
+}
+  
+#stock-info h3{
+    margin-bottom: 30px;
+}
+
+#stock-info h3 span{
+    color: #33BB33;
+}
+  
+#stock-left-col{
+    float: left;
+}
+  
+#stock-right-col{
+    float: right;
+}
+  
+#stock-info > div{
+    width: 50%;
+}
+
+.bs{
+  text-align: center;
+  width: 100%;
+  /* display: flex; */
+  border-collapse: collapse;
+  justify-content: center;
+  padding: 2rem;
+  border: 1px solid black;
+  margin-bottom: 3rem;
+}
+
+.myth { 
+  /* display: block;  */
+  /* float: left;  */
+  border: 1px solid black;
+}
+
+.mytd { 
+  /* display: block; */
+  border: 1px solid black;
+  padding: 10px 10px 10px 20px;
+}
+
+
+.table-wrapper
+{
+    border: 1px;
+    width: 100%;
+    height: 50rem;
+    overflow: auto;
+    text-align: center;
+}
+
+.tableLine{
+    border-top: 1px solid #BBB;
+    padding: 20px 0;
+    clear: both;
+}
+
+.tableLine > div{
+    margin-bottom: 20px;
+}
+.label{float:left; margin-left: 30px;}
+.value{float:right; margin-right: 30px; font-weight: bold;}
+
+.val{
+    font-weight: bold;
+}
+
+.tablehead{
+  background: #36304a;
+  color: white;
+  line-height: 2.2;
+  text-align: center;
+}

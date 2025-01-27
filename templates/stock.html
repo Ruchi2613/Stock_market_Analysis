@@ -1,0 +1,124 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<!--Title-->
+<h2 class='stk-title'>{{stk_info['longName']}}({{stk_info['symbol']}})</h2>
+<!--Stock Current Value-->
+<div class='container tit'>
+  <h4><span id='open'>{{stk_info['open']}}</span> <span id='chng'>{{'%0.2f'| format(hist_data[0][8]|float)}}</span> <span id='perchng'>({{'%0.2f'| format(hist_data[0][9]|float)}}%)</span></h4>
+</div>
+<!--Plots dropdown-->
+<div class="container dropdown">
+  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    View Plot
+  </button>
+  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+    <a class="dropdown-item" href="/plotmacd">MACD</a>
+    <a class="dropdown-item" href="/plotline">Line</a>
+    <a class="dropdown-item" href="/plotcandle">Candle</a>
+  </div>
+</div>
+<!--More details about stock-->
+<div id="stock-info">
+  
+  <div id="stock-left-col">
+    <div class="tableLine">
+      <div class="label">Prev Close:</div>
+      <div class="value stockPrevClose">{{stk_info['previousClose']}}</div>
+    </div>
+    <div class="tableLine">
+      <div class="label">Open:</div>
+      <div class="value stockOpen">{{stk_info['open']}}</div>
+    </div>
+    <div class="tableLine">
+      <div class="label">Bid:</div>
+      <div class="value stockBid">{{stk_info['bid']}}</div>
+    </div>
+    <div class="tableLine">
+      <div class="label">Ask:</div>
+      <div class="value stockAsk">{{stk_info['ask']}}</div>
+    </div>
+    <div class="tableLine">
+      <div class="label">Beta 3 Year:</div>
+      <div class="value stockTargetEst">{{stk_info['beta3Year']}}</div>
+    </div>
+  </div>
+  
+  <div id="stock-right-col">
+  <div class="tableLine">
+      <div class="label">Volume: </div>
+      <div class="value stockVolume">{{stk_info['volume']}}</div>
+    </div>
+    <div class="tableLine">
+      <div class="label">Avg Volume: </div>
+      <div class="value stockAvgVolume">{{stk_info['averageVolume']}}</div>
+    </div>
+    <div class="tableLine">
+      <div class="label">Market Cap:</div>
+      <div class="value stockMarketCap">{{stk_info['marketCap']}}</div>
+    </div>
+    <div class="tableLine">
+      <div class="label">Day High: </div>
+      <div class="value stockDayHigh">{{stk_info['dayHigh']}}</div>
+    </div>
+    <div class="tableLine">
+      <div class="label">Day Low: </div>
+      <div class="value stockDayLow">{{stk_info['dayLow']}}</div>
+    </div>
+  </div>
+
+</div>
+<!--Indicators-->
+    <table class='container-fluid bs'>
+      <thead>
+        <tr class='mytr'>
+          <th class='myth'>RSI (30 days)</th>
+          <th class='myth'>SMA (30 days)</th>
+          <th class='myth'>BEARISH MARKET TREND</th>
+          <th class='myth'>BULLISH MARKET TREND</th>
+          <th class='myth'>BUY/SELL</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class='mytr'>
+          <td class='mytd'>{{'%0.2f'| format(rsi|float)}}</td>
+          <td class='mytd'>{{'%0.2f'| format(sma|float)}}</td>
+          <td class='mytd'>{{b_count}}</td>
+          <td class='mytd'>{{s_count}}</td>
+          <td class='mytd'>{{bs}}</td>
+        </tr>
+      </tbody>
+    </table>
+
+<!--Historical Data-->
+<div class='table-wrapper'>
+  <table class="table table-striped table-sm">
+    <thead>
+      <tr class='tablehead'>
+        <th class='column1'>Date</th>
+        <th class='column2'>Open</th>
+        <th class='column3'>High</th>
+        <th class='column4'>Low</th>
+        <th class='column5'>Close</th>
+        <th class='column6'>Volume</th>
+        <th class='column7'>Change</th>
+        <th class='column8'>%Change</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for value in hist_data %}
+      <tr>
+        <td>{{ value[7] }}</td>
+        <td>{{'%0.2f'| format(value[0]|float)}}</td>
+        <td>{{'%0.4f'| format(value[1]|float)}}</td>
+        <td>{{'%0.4f'| format(value[2]|float)}}</td>
+        <td>{{'%0.2f'| format(value[3]|float)}}</td>
+        <td>{{'%0.2f'| format(value[4]|float)}}</td>
+        <td>{{'%0.2f'| format(value[8]|float)}}</td>
+        <td>{{'%0.2f'| format(value[9]|float)}}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+{% endblock %}
